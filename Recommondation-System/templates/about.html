@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://plus.unsplash.com/premium_photo-1661255378914-d0934128d91d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+      background-size: cover;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+      
+      .content {
+        padding-top: 250px;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+        position: relative;
+        margin-top: -200px;
+        /* offset the height of the red circle */
+      }
+      
+      body::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+
+    <body>
+      <div class="red-splash"></div>
+      {% include 'navbar.html' %}
+      <div class="container">
+        <div class="content">
+          <h1>About Crime Article Recommendor</h1>
+          <p>Crime Article Recommendor is a system that recommends crime-related articles to users based on their interests and reading history. Our goal is to provide users with the most relevant and interesting articles on crime and criminal justice.</p>
+          <p>Our system uses advanced algorithms to analyze user behavior and identify patterns in their reading habits. We track the articles that users read, how long they spend reading them, and how they interact with the content. We then use this information to recommend articles that we believe will be of interest to the user. Our recommendations are constantly updated to ensure that they remain relevant and up-to-date.</p>
+          <p>At Crime Article Recommendor, we are committed to providing our users with the best possible experience. We believe that our system is the most effective way to discover new and interesting crime-related articles. We are constantly working to improve our algorithms and add new features to our system. If you have any questions or suggestions, please don't hesitate to contact us.</p>
+          <p>Some of the features of our system include:</p>
+          <ul>
+            <li>Personalized recommendations based on your interests and reading history</li>
+            <li>Constantly updated recommendations to ensure that they remain relevant and up-to-date</li>
+            <li>A user-friendly interface that makes it easy to discover new articles</li>
+            <li>Advanced algorithms that analyze user behavior and identify patterns in their reading habits</li>
+            <li>A commitment to user privacy and data security</li>
+          </ul>
+          <p>If you're interested in learning more about Crime Article Recommendor, please don't hesitate to contact us. We're always happy to hear from our users and answer any questions they may have.</p>
+        </div>
+      </div>
+    </body>
+  </head>
+</html>

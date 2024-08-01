@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Crime Articles</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  </head>
+
+  <style>
+*{
+    text-align: center;
+    margin: 0%;
+}
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            margin-top: 0;
+            margin-left: 2px;
+            margin-right: 5px;
+        }
+        .nav-item:hover{
+            color: whitesmoke;
+        }
+        .navbar{
+            background:#232f3e;
+            position: sticky;
+        }
+        .nav-link{
+            color: #fff;
+        }
+
+        .navbar-brand:hover{
+
+            color:white;
+        }
+        .myimg {
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+            border-radius: 25px;
+            background-image: url('templates/logo.jpeg');
+        }
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        button{
+            border: 2px solid #fff;
+            color: #fff;
+            background: transparent;
+            border-radius: 10px;
+        }
+        .navbar-brand{
+            color: #fff;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <!-- Logo at the top-left corner -->
+            <div class="logo">
+                 <img class="myimg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlrjMjpWYJMs0Mo9lH8luLSWHz4xtaumx2Tw&s" alt="crime">
+            </div>
+
+            <a class="navbar-brand" href="#">Crime Articles</a>
+            <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                    
+                </ul>
+                <!-- <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="button1" type="submit">Search</button>
+                </form> -->
+            </div>
+        </div>
+    </nav>
+
+
+
+
+<!-- Main form of the page -->
+<h1 class="mt-4 my-4 text-center text-green">Crime Article recommender</h1>
+<div class="container" style="background: #fff;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; width: 700px; color: white; border-radius: 15px; padding: 40px;">
+    <form action="/predict" method="post">
+        <div class="form-group">
+            <label for="articles">Articles: </label>
+            <input type="text" class="form-control" id="articles" name="articles" placeholder="Enter the articles that you have read or you like">
+        </div>
+        <div name="mysysms" id="transcription"></div>
+        {% if message %}
+        <p>{{ message }}</p>
+        {% endif %}
+        <br>
+        <button type="submit" class="btn btn-lg" style="font-size: 18px;width: 100%; padding: 8px; color: #fff; background: #000117; margin-bottom: 5px;">Recommend</button>
+    </form>
+</div>
+
+<!-- Recommended articles section -->
+<div class="container mt-4">
+    <h2>Recommended Articles:</h2>
+    {% if articles_found == False %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>No articles found!</strong> Please try again with different keywords.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="row">
+        {% for article in recommended_articles %}
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ article.title }}</h5>
+                    <a href="{{ article.url }}" class="btn btn-primary" target="_blank">Read More</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+
+</html>
